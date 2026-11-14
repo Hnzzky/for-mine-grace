@@ -1,0 +1,79 @@
+ :root {
+  --pink: #d9799d; --deep: #98516d; --ink: #573d4a; --muted: #987f8b;
+  --paper: #fff9fb; --rose: #fdeaf1; --line: #f3d8e2; --white: #fff;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink); background: var(--paper); font-family: "DM Sans", sans-serif; overflow-x: hidden; }
+body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.23; z-index:-1; background-image: radial-gradient(#e9b8ca .8px, transparent .8px); background-size: 22px 22px; }
+.ambient { position:fixed; width:320px; height:320px; border-radius:50%; filter:blur(80px); opacity:.25; z-index:-1; }
+.ambient-one { background:#f5b9d0; top:10%; left:-180px; }.ambient-two { background:#e8c6f0; right:-180px; bottom:8%; }
+.topbar { max-width:1100px; margin:auto; padding:22px 6%; display:flex; justify-content:space-between; align-items:center; }
+.brand { color:var(--deep); text-decoration:none; font-family:"Playfair Display",serif; font-size:19px; }.brand span { font-size:14px; }
+.music-toggle { border:1px solid var(--line); background:#ffffffb8; color:var(--deep); border-radius:30px; padding:10px 15px; cursor:pointer; font:inherit; font-size:12px; }
+.section { padding:100px 7%; max-width:1100px; margin:auto; }
+.hero { min-height:calc(100vh - 70px); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding-top:50px; position:relative; }
+.eyebrow { color:var(--pink); text-transform:uppercase; letter-spacing:2.5px; font-size:10px; font-weight:700; }
+.tiny-heart { font-size:15px; margin-right:7px; }
+.hero-orbit { width:170px; height:170px; position:relative; margin:30px 0 16px; display:grid; place-items:center; }
+.planet { width:75px; height:75px; display:grid; place-items:center; border-radius:50%; color:white; font-size:36px; background:linear-gradient(145deg,#f5b3ca,#d9799d); box-shadow:0 15px 35px #e9afc4aa; animation:float 4s ease-in-out infinite; }
+.orbit { position:absolute; border:1px solid #eab8ca; border-radius:50%; transform:rotate(-25deg); }.orbit-a { width:150px;height:65px; }.orbit-b { width:165px;height:110px;transform:rotate(48deg); }
+.sparkle { position:absolute; color:#d9799d; }.s1{top:7px;right:25px}.s2{bottom:14px;left:18px;font-size:22px}.s3{top:42px;left:3px}
+.script { font-family:"Playfair Display",serif; font-style:italic; color:var(--pink); font-size:19px; margin:10px 0; }
+h1,h2,h3 { font-family:"Playfair Display",serif; font-weight:500; }
+h1 { font-size:clamp(48px,8vw,82px); line-height:1.05; margin:8px 0 18px; letter-spacing:-2px; } h1 em,h2 em { color:var(--pink); font-weight:500; }
+.hero-copy { color:var(--muted); line-height:1.9; font-size:14px; }
+.button { display:inline-flex; gap:18px; align-items:center; border:0; border-radius:30px; padding:14px 23px; text-decoration:none; cursor:pointer; font:600 12px "DM Sans",sans-serif; transition:.25s; }
+.primary { background:var(--pink); color:white; box-shadow:0 9px 22px #d9799d42; }.primary:hover { transform:translateY(-3px); box-shadow:0 13px 25px #d9799d60; }
+.hero .button { margin-top:22px; }.since { margin-top:55px; letter-spacing:2px; font-size:9px; color:#bd9eab; }.since span{color:var(--pink);margin-left:8px}
+.section-heading { margin-bottom:35px; }.section-heading h2,.surprise-box h2,.closing h2 { font-size:clamp(34px,5vw,52px); line-height:1.15; margin:14px 0; letter-spacing:-1px; }.centered{text-align:center}.muted{color:var(--muted);font-size:13px;line-height:1.8}
+.intro { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:50px; }
+.note-card { background:white; padding:38px; border:1px solid var(--line); border-radius:5px 28px 28px 28px; box-shadow:0 18px 55px #9d60700c; position:relative; line-height:1.9; color:#806575; font-size:14px; }
+.card-flower { position:absolute; right:24px; top:14px; color:#e6a5bd; font-size:28px; }.signature{display:block;text-align:right;color:var(--pink);font-family:"Playfair Display",serif;font-style:italic;margin-top:22px}
+.gallery { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px; align-items:center; }
+.photo-card { background:white; padding:12px 12px 18px; margin:0; box-shadow:0 15px 35px #9d607018; border:1px solid #f5e6ec; transition:.3s; }.photo-card:hover{transform:translateY(-8px) rotate(0deg)}.tilt-left{transform:rotate(-2deg)}.tilt-right{transform:rotate(2deg)}
+.photo-card img,.photo-placeholder { display:block; width:100%; aspect-ratio:4/4.8; object-fit:cover; object-position:center; background:#fcecf2; border-radius:2px; }
+.photo-placeholder { display:none; place-content:center; justify-items:center; color:#d9799d; gap:8px; }.photo-placeholder span{font-size:42px}.photo-placeholder small{font-size:11px}
+.photo-card figcaption { display:grid; gap:5px; text-align:center; padding-top:14px; }.photo-card figcaption strong{font:500 17px "Playfair Display",serif}.photo-card figcaption small{font-size:10px;color:#b49ba7}
+.gallery-tip {text-align:center;color:#b49ba7;font-size:11px;margin-top:28px}.gallery-tip code{background:#fcecf2;padding:3px 6px;border-radius:5px}
+.timeline { max-width:650px; margin:50px auto 0; position:relative; }.timeline::before{content:"";position:absolute;left:19px;top:10px;bottom:20px;width:1px;background:#eac5d3}
+.timeline-item { display:grid;grid-template-columns:40px 1fr;gap:22px;position:relative;margin-bottom:34px}.timeline-dot{width:39px;height:39px;border-radius:50%;background:white;border:1px solid var(--line);display:grid;place-items:center;color:var(--pink);z-index:1}
+.timeline-content{background:white;border:1px solid var(--line);border-radius:15px;padding:22px 25px}.timeline-content time{font-size:9px;letter-spacing:2px;color:var(--pink);font-weight:700}.timeline-content h3{font-size:22px;margin:9px 0}.timeline-content p{font-size:13px;line-height:1.8;color:var(--muted);margin:0}
+.surprise-box { background:linear-gradient(145deg,#fff0f5,#fffafd);border:1px solid var(--line);border-radius:28px;text-align:center;padding:65px 25px;max-width:720px;margin:auto;box-shadow:0 20px 60px #9d60700d}
+.gift-icon{font-size:54px;margin:25px 0 10px;animation:float 3s ease-in-out infinite}.surprise-box h2{margin-bottom:8px}.surprise-message{max-width:430px;margin:35px auto 0;padding:25px;background:#fff;border:1px solid var(--line);border-radius:18px;animation:appear .5s ease}.big-heart{font-size:35px;color:var(--pink)}.surprise-message h3{font-size:25px;margin:8px}.surprise-message p{font-size:13px;line-height:1.9;color:var(--muted)}
+.envelope { width:min(340px,90%);height:190px;border:1px solid #edc9d7;border-radius:12px;background:linear-gradient(145deg,#f9dce7,#f5cbd9);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;margin:35px auto;cursor:pointer;box-shadow:0 15px 35px #9d607015;transition:.3s;color:var(--deep)}.envelope:hover{transform:translateY(-5px)}.envelope-heart{font-size:45px}.envelope-label{font-size:11px;letter-spacing:1px}
+.letter{max-width:650px;margin:0 auto;background:#fff;padding:40px 45px;border:1px solid var(--line);border-radius:4px 22px 22px 22px;box-shadow:0 18px 50px #9d607012;color:#806575;font:14px/2 "Playfair Display",serif;animation:appear .5s ease}.letter-sign{color:var(--pink);text-align:right;font-style:italic}
+.closing{text-align:center;padding-top:90px;padding-bottom:80px}.closing-stars{color:var(--pink);font-size:22px;letter-spacing:9px}.closing h2{margin:10px 0}.counter{display:inline-block;margin-top:25px;padding:10px 17px;border:1px solid var(--line);border-radius:30px;color:var(--deep);font-size:11px;background:#fff}.back-top{display:block;margin-top:38px;color:var(--pink);text-decoration:none;font-size:11px}
+footer{text-align:center;padding:25px;color:#b49ba7;font-size:10px;border-top:1px solid #f4e5eb}
+[hidden]{display:none!important}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}}\n@media(max-width:700px){.section{padding:75px 7%}.intro{grid-template-columns:1fr;gap:10px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));max-width:520px;margin:auto;gap:16px}.photo-card{transform:none}.section-heading h2,.surprise-box h2,.closing h2{font-size:37px}.note-card{padding:30px 25px}.letter{padding:28px 24px}.topbar{padding:17px 6%}.brand{font-size:16px}.brand span{font-size:12px}}
+
+
+/* Password welcome screen */
+.password-gate {
+  position:fixed; inset:0; z-index:1000; display:grid; place-items:center;
+  padding:24px; background:radial-gradient(circle at 50% 35%, #fff 0, #fff4f8 48%, #fbe5ee 100%);
+  transition:opacity .55s ease, visibility .55s ease;
+}
+.password-gate.unlocked { opacity:0; visibility:hidden; pointer-events:none; }
+.gate-card {
+  width:min(440px,100%); text-align:center; padding:42px 30px 34px;
+  border:1px solid #f1d3df; border-radius:28px; background:#ffffffd9;
+  box-shadow:0 25px 80px #a45d7818; backdrop-filter:blur(10px);
+}
+.gate-orbit { width:92px;height:92px;border:1px solid #e9b8ca;border-radius:50%;margin:0 auto 22px;display:grid;place-items:center;position:relative;color:#d9799d;font-size:39px; }
+.gate-orbit::before { content:"";position:absolute;width:118px;height:43px;border:1px solid #f0cada;border-radius:50%;transform:rotate(-30deg); }
+.gate-orbit i,.gate-orbit b { position:absolute;font-style:normal;font-size:15px;color:#d9799d; }
+.gate-orbit i {right:-8px;top:5px}.gate-orbit b{left:-9px;bottom:8px}
+.gate-card h1 {font-size:clamp(42px,10vw,58px);margin:12px 0}
+.gate-copy {font-size:13px;line-height:1.9;color:var(--muted);margin:0 0 23px}
+.password-form {display:grid;gap:12px}
+.password-form input {width:100%;border:1px solid #edcfdb;border-radius:30px;background:#fffafd;padding:15px 18px;text-align:center;font:13px "DM Sans",sans-serif;color:var(--ink);outline:none}
+.password-form input:focus {border-color:var(--pink);box-shadow:0 0 0 3px #d9799d20}
+.password-form .button {justify-content:center;width:100%}
+.password-error {min-height:16px;margin:0;color:#bf557b;font-size:11px}
+.gate-card small {display:block;margin-top:16px;color:#bd9eab;font-size:10px;letter-spacing:1px}
+.sr-only {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:480px){.gate-card{padding:35px 22px 28px}}
